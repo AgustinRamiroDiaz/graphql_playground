@@ -1,0 +1,17 @@
+name: graphql-playground
+
+build:
+  api:
+    context: api
+
+dev:
+  api:
+    image: $OKTETO_BUILD_API_IMAGE
+    autocreate: true
+    context: api
+    command: bash
+    sync:
+      - api:/app
+    workdir: /app
+    forward:
+      - 8080:8080
